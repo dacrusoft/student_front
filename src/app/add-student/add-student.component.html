@@ -1,0 +1,55 @@
+<h3>Crear Estudiante</h3>
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div [hidden]="submitted" style="width: 400px;">
+            <form [formGroup]="studentsaveform" #savestudent (ngSubmit)="saveStudent(saveStudent)">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" formControlName="student_name" data-toggle="tooltip" data-placement="right" title="Enter Student Name">
+                    <div class="alert alert-danger" *ngIf="(StudentName.touched) && (StudentName.invalid)" style="margin-top: 5px;">
+                        <span *ngIf="StudentName.errors.required">Nombre es requerido</span>
+                        <span *ngIf="StudentName.errors.minlength"> 
+                        error de longitud 
+                    </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Email</label>
+                    <input type="text" class="form-control" formControlName="student_email" data-toggle="tooltip" data-placement="right" title="Enter Student Email">
+                    <div class="alert alert-danger" *ngIf="(StudentEmail.touched) && (StudentEmail.invalid)" style="margin-top: 5px;">
+                        <span *ngIf="StudentEmail.errors.required">Email es requerido</span>
+                        <span *ngIf="StudentEmail.errors.email"> 
+                        Email no válido
+                    </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="branch">Grado</label>
+                    <select class="form-control" formControlName="student_branch" data-toggle="tooltip" data-placement="right" title="Select Student Branch">
+                    <option value="null">--Seleccione Grado--</option>
+                  <option value="tecnico">Ténico</option>
+                  <option value="tecnologo">Tecnólogo</option>
+                  <option value="pregrado">Pregrado</option>
+                  <option value="posgrado">Posgrado</option>
+                </select>
+                </div>
+
+                <button type="submit" class="btn btn-success">Guardar</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div [hidden]="!submitted">
+            <h4>Agregado exitosamente!</h4>
+            <button (click)="addStudentForm()" class='btn btn-primary'>Agregar otro estudiante</button>
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
